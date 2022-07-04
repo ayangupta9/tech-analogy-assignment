@@ -5,7 +5,7 @@ function useAuthQuery (onSuccess, onError) {
   async function fetchAuth () {
     const response = await fetch(AUTH_MICROSERVICE_BASE_URL + 'api/profile/', {
       method: 'GET',
-      credentials: 'include',
+      // credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Credentials': true

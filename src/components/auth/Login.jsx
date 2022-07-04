@@ -52,7 +52,7 @@ function Login () {
             AUTH_MICROSERVICE_BASE_URL + 'api/login',
             {
               method: 'POST',
-              credentials: 'include',
+              // credentials: 'include',
               headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Credentials': true

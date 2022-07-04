@@ -31,7 +31,7 @@ function TaskInput ({ setTodoTasks, setDoingTasks, setDoneTasks }) {
           TASKS_MICROSERVICE_BASE_URL + 'createtask',
           {
             method: 'POST',
-            credentials: 'include',
+            // credentials: 'include',
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Credentials': true

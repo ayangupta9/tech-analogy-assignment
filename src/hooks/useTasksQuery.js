@@ -7,7 +7,7 @@ function useTasksQuery (onSuccess, userId) {
       TASKS_MICROSERVICE_BASE_URL + 'task/user/' + userId,
       {
         method: 'GET',
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': true
