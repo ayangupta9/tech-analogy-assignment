@@ -77,8 +77,8 @@ function Signup () {
                 value={values.username}
                 onBlur={handleBlur}
                 required
-                name='username-input'
-                id='username-input'
+                name='username'
+                id='username'
               />
 
               {errors.username && touched.username ? (
@@ -97,8 +97,8 @@ function Signup () {
                 value={values.email}
                 onBlur={handleBlur}
                 required
-                name='email-input'
-                id='email-input'
+                name='email'
+                id='email'
               />
 
               {errors.email && touched.email ? (
@@ -116,8 +116,8 @@ function Signup () {
                 value={values.password}
                 onBlur={handleBlur}
                 required
-                name='password-input'
-                id='password-input'
+                name='password'
+                id='password'
               />
 
               {errors.password && touched.password ? (
@@ -135,8 +135,8 @@ function Signup () {
                 value={values.confirmPassword}
                 onBlur={handleBlur}
                 required
-                name='confirm-password-input'
-                id='confirm-password-input'
+                name='confirm-password'
+                id='confirm-password'
               />
 
               {errors.confirmPassword && touched.confirmPassword ? (
@@ -145,7 +145,7 @@ function Signup () {
             </div>
             <br />
 
-            <div className='form-group input-field-wrapper '>
+            <div className='form-group input-field-wrapper'>
               <button
                 className='btn btn-outline-danger w-100'
                 disabled={isSubmitting}

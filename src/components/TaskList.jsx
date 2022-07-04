@@ -2,20 +2,15 @@ import React, { useEffect } from 'react'
 import TaskRow from './TaskRow'
 
 function TaskList ({ listName, styleClass, tasks }) {
-  useEffect(() => {
-    console.log(tasks)
-  }, [])
-
   return (
     <div
       style={{
-        height: '300px',
-        borderRadius: '15px',
-        boxShadow: '0px 0px 20px -4px lightgray'
+        maxHeight: '800px',
+        flex: '1'
       }}
-      className='d-flex flex-column justify-content-start flex-fill align-items-center py-3 px-3'
+      className='d-flex flex-column justify-content-start align-items-center py-3'
     >
-      <div className='task-list-header d-flex flex-row justify-content-around align-items-center'>
+      <div className='task-list-header d-flex flex-row justify-content-around align-items-center '>
         <h6
           className={`bg-${styleClass} rounded-3 bg-opacity-25 fw-bold w-100 p-2 text-start ps-4`}
         >
@@ -27,7 +22,7 @@ function TaskList ({ listName, styleClass, tasks }) {
             }}
             className='bg-white ms-5 px-2 py-1'
           >
-            {tasks?.tasks?.length}
+            {tasks?.length}
           </span>
         </h6>
       </div>
@@ -38,13 +33,18 @@ function TaskList ({ listName, styleClass, tasks }) {
           height: '100%',
           width: '100%'
         }}
-        className='d-flex flex-column gap-2 px-2 py-2'
+        className='task-list-wrapper d-flex flex-column px-2 py-2'
       >
-        {tasks &&
-          tasks.tasks.map((task, taskId) => {
-            return <TaskRow key={taskId} task={task} signal={tasks.signal} />
-          })}
+        {tasks && tasks.length > 0 ? (
+          tasks.map((task, taskId) => {
+            return <TaskRow key={taskId} task={task} />
+          })
+        ) : (
+          <p className='p-4'>No tasks here</p>
+        )}
       </div>
+
+      <button className='btn btn-outline-dark w-100 my-3'><i className='bi bi-plus-circle'></i> ADD A TASK</button>
     </div>
   )
 }

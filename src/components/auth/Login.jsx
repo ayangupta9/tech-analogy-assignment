@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import { AuthContext } from '../../contexts/AuthContextProvider'
+import { useNavigate } from 'react-router-dom'
+import { AUTH_MICROSERVICE_BASE_URL } from '../../App'
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -12,6 +15,9 @@ const LoginSchema = Yup.object().shape({
 })
 
 function Login () {
+  const { setAuth } = useContext(AuthContext)
+  const navigate = useNavigate()
+
   return (
     <div
       style={{
@@ -40,8 +46,36 @@ function Login () {
         }}
         validationSchema={LoginSchema}
         onSubmit={async (values, { resetForm, setSubmitting }) => {
-          setSubmitting(false)
           console.log(values)
+
+          const response = await fetch(
+            AUTH_MICROSERVICE_BASE_URL + 'api/login',
+            {
+              method: 'POST',
+              credentials: 'include',
+              headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Credentials': true
+              },
+              body: JSON.stringify(values)
+            }
+          )
+
+          const result = await response.json()
+          console.log(result)
+
+          navigate('/', {
+            replace: true
+          })
+          setSubmitting(false)
+
+          setAuth(prev => {
+            return {
+              ...prev,
+              user: result.user,
+              isAuthenticated: true
+            }
+          })
           resetForm()
         }}
       >
@@ -65,8 +99,8 @@ function Login () {
                 onBlur={handleBlur}
                 type='email'
                 required
-                name='email-input'
-                id='email-input'
+                name='email'
+                id='email'
               />
 
               {errors.email && touched.email ? (
@@ -84,8 +118,8 @@ function Login () {
                 onBlur={handleBlur}
                 type='password'
                 required
-                name='password-input'
-                id='password-input'
+                name='password'
+                id='password'
               />
 
               {errors.password && touched.password ? (
