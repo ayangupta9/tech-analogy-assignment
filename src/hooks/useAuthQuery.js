@@ -8,7 +8,7 @@ function useAuthQuery (onSuccess, onError) {
       // credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Credentials': true
+        // 'Access-Control-Allow-Credentials': true
       }
     })
     const result = await response.json()

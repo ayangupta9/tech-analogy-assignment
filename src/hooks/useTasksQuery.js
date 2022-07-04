@@ -10,7 +10,7 @@ function useTasksQuery (onSuccess, userId) {
         // credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Credentials': true
+          // 'Access-Control-Allow-Credentials': true
         }
       }
     )
